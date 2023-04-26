@@ -1,0 +1,60 @@
+PODS:
+  - lottie-ios (4.1.2)
+  - PanModal (1.2.7)
+  - ReachabilitySwift (5.0.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SnapKit (5.6.0)
+  - Then (3.0.0)
+  - Toast-Swift (5.0.1)
+  - UIColor_Hex_Swift (5.1.9)
+
+DEPENDENCIES:
+  - lottie-ios
+  - PanModal
+  - ReachabilitySwift
+  - RxCocoa (= 6.5.0)
+  - RxGesture
+  - RxSwift (= 6.5.0)
+  - SnapKit (~> 5.6.0)
+  - Then
+  - Toast-Swift (~> 5.0.1)
+  - UIColor_Hex_Swift (~> 5.1.9)
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - PanModal
+    - ReachabilitySwift
+    - RxCocoa
+    - RxGesture
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - Then
+    - Toast-Swift
+    - UIColor_Hex_Swift
+
+SPEC CHECKSUMS:
+  lottie-ios: b3846a9fa8ca1a1a3bebfa256ebe8b6fd4aaaaad
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  UIColor_Hex_Swift: 20cb4e8d51b63e168a9da6933bc5d39cd8fb4ab5
+
+PODFILE CHECKSUM: 0255e81c8ff538e792e5b60ecbf6653f04900752
+
+COCOAPODS: 1.11.3
