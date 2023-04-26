@@ -18,6 +18,11 @@
 		B8CD452129F8B8A200508FA4 /* CommonUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD452029F8B8A200508FA4 /* CommonUrl.swift */; };
 		B8CD452329F8BB0700508FA4 /* AppConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD452229F8BB0700508FA4 /* AppConfigure.swift */; };
 		B8CD452829F8BCCD00508FA4 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD452729F8BCCD00508FA4 /* Person.swift */; };
+		B8CD452B29F8DBF100508FA4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD452A29F8DBF100508FA4 /* BaseViewController.swift */; };
+		B8CD452F29F8DCA500508FA4 /* CommonBottomModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD452E29F8DCA500508FA4 /* CommonBottomModal.swift */; };
+		B8CD453129F8DCF300508FA4 /* CommonLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD453029F8DCF300508FA4 /* CommonLoadingView.swift */; };
+		B8CD453429F8DD1B00508FA4 /* lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = B8CD453329F8DD1B00508FA4 /* lottie.json */; };
+		B8CD453629F8DD7200508FA4 /* CommonRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD453529F8DD7200508FA4 /* CommonRetryView.swift */; };
 		CC78AB669AB87A7905DC7892 /* Pods_OrganizeWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50144647E0893750C959B045 /* Pods_OrganizeWebView.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,11 @@
 		B8CD452029F8B8A200508FA4 /* CommonUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUrl.swift; sourceTree = "<group>"; };
 		B8CD452229F8BB0700508FA4 /* AppConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigure.swift; sourceTree = "<group>"; };
 		B8CD452729F8BCCD00508FA4 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		B8CD452A29F8DBF100508FA4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B8CD452E29F8DCA500508FA4 /* CommonBottomModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBottomModal.swift; sourceTree = "<group>"; };
+		B8CD453029F8DCF300508FA4 /* CommonLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoadingView.swift; sourceTree = "<group>"; };
+		B8CD453329F8DD1B00508FA4 /* lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lottie.json; path = ../lottie.json; sourceTree = "<group>"; };
+		B8CD453529F8DD7200508FA4 /* CommonRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRetryView.swift; sourceTree = "<group>"; };
 		D78A701B8F11EA7DFA17C79A /* Pods-OrganizeWebView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrganizeWebView.release.xcconfig"; path = "Target Support Files/Pods-OrganizeWebView/Pods-OrganizeWebView.release.xcconfig"; sourceTree = "<group>"; };
 		EA0F408E4D6DEE149947A0DD /* Pods-OrganizeWebView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrganizeWebView.debug.xcconfig"; path = "Target Support Files/Pods-OrganizeWebView/Pods-OrganizeWebView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +100,10 @@
 		B888EF9029F7C61700065C9E /* OrganizeWebView */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD453229F8DD0800508FA4 /* Resource */,
+				B8CD452D29F8DC9300508FA4 /* Common */,
+				B8CD452C29F8DC4E00508FA4 /* WebView */,
+				B8CD452929F8DBDC00508FA4 /* Base */,
 				B8CD452429F8BC9100508FA4 /* Model */,
 				B888EF9129F7C61700065C9E /* AppDelegate.swift */,
 				B888EF9329F7C61700065C9E /* SceneDelegate.swift */,
@@ -97,10 +111,6 @@
 				B888EF9C29F7C61800065C9E /* LaunchScreen.storyboard */,
 				B888EF9F29F7C61800065C9E /* Info.plist */,
 				B888EFA529F7C66C00065C9E /* MainViewController.swift */,
-				B888EFA729F7C8AE00065C9E /* CommonWebView.swift */,
-				B8CD451C29F8B26A00508FA4 /* CommonBridgeResultDto.swift */,
-				B8CD451E29F8B5FA00508FA4 /* CommonWebViewController.swift */,
-				B8CD452029F8B8A200508FA4 /* CommonUrl.swift */,
 				B8CD452229F8BB0700508FA4 /* AppConfigure.swift */,
 			);
 			path = OrganizeWebView;
@@ -109,9 +119,46 @@
 		B8CD452429F8BC9100508FA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD451C29F8B26A00508FA4 /* CommonBridgeResultDto.swift */,
 				B8CD452729F8BCCD00508FA4 /* Person.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B8CD452929F8DBDC00508FA4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD452A29F8DBF100508FA4 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B8CD452C29F8DC4E00508FA4 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				B888EFA729F7C8AE00065C9E /* CommonWebView.swift */,
+				B8CD451E29F8B5FA00508FA4 /* CommonWebViewController.swift */,
+				B8CD452029F8B8A200508FA4 /* CommonUrl.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		B8CD452D29F8DC9300508FA4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD452E29F8DCA500508FA4 /* CommonBottomModal.swift */,
+				B8CD453029F8DCF300508FA4 /* CommonLoadingView.swift */,
+				B8CD453529F8DD7200508FA4 /* CommonRetryView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B8CD453229F8DD0800508FA4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD453329F8DD1B00508FA4 /* lottie.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CD453429F8DD1B00508FA4 /* lottie.json in Resources */,
 				B888EF9E29F7C61800065C9E /* LaunchScreen.storyboard in Resources */,
 				B888EF9B29F7C61800065C9E /* Assets.xcassets in Resources */,
 			);
@@ -228,13 +276,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CD453129F8DCF300508FA4 /* CommonLoadingView.swift in Sources */,
 				B8CD452329F8BB0700508FA4 /* AppConfigure.swift in Sources */,
 				B888EFA829F7C8AE00065C9E /* CommonWebView.swift in Sources */,
 				B888EFA629F7C66C00065C9E /* MainViewController.swift in Sources */,
 				B8CD451F29F8B5FA00508FA4 /* CommonWebViewController.swift in Sources */,
 				B8CD451D29F8B26A00508FA4 /* CommonBridgeResultDto.swift in Sources */,
+				B8CD452B29F8DBF100508FA4 /* BaseViewController.swift in Sources */,
 				B8CD452129F8B8A200508FA4 /* CommonUrl.swift in Sources */,
+				B8CD453629F8DD7200508FA4 /* CommonRetryView.swift in Sources */,
 				B8CD452829F8BCCD00508FA4 /* Person.swift in Sources */,
+				B8CD452F29F8DCA500508FA4 /* CommonBottomModal.swift in Sources */,
 				B888EF9229F7C61700065C9E /* AppDelegate.swift in Sources */,
 				B888EF9429F7C61700065C9E /* SceneDelegate.swift in Sources */,
 			);
@@ -383,6 +435,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +464,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

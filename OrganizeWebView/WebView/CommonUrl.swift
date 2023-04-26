@@ -82,3 +82,17 @@ struct KotlinUrl : CommonUrlProtocol {
     }
 }
 
+
+struct CommonUrl : CommonUrlProtocol {
+    var baseUrl: String {
+        return ""
+    }
+    
+    var resultUrl: String = ""
+    
+    
+    init(_ url : String) {
+        resultUrl = url
+    }
+}
+

@@ -15,8 +15,19 @@ import WebKit
  3. LoadingView
  */
 
-typealias BridgeDelegate = (Data) -> Void
+/*
+ 1. FunctionName
+ 2. JsonData
+ */
+typealias BridgeDelegate = (String, Data) -> Void
 class CommonWebView : WKWebView {
+    /*
+     BrideDelegate Name
+     */
+    static let PROVIDE_UI   = "provide_ui"
+    static let PROVIDE_DATA = "provide_data"
+    static let COMMON       = "common"
+    
     private var bridgeName : String = ""
     private var bridgeDelegates : [String : BridgeDelegate] = [:]
     
@@ -24,6 +35,14 @@ class CommonWebView : WKWebView {
         self.init(frame: .zero)
         self.bridgeName = bridgeName
         self.attribute()
+    }
+    override init(frame: CGRect, configuration: WKWebViewConfiguration) {
+        super.init(frame: frame, configuration: configuration)
+        self.attribute()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func load(with str : String) {
@@ -74,7 +93,9 @@ class CommonWebView : WKWebView {
          그렇지 않은 CommonWebView라면 소통을 할 수 없다.
          bridgeName을 하나만 연결하고 이벤트 및 데이터 전달은 약속한 JSON 규격을 통해서 통신한다. 그럼으로 하나만 설정한다.
          */
-        self.configuration.userContentController.add(self, name: bridgeName)
+        if !bridgeName.isEmpty {
+            self.configuration.userContentController.add(self, name: bridgeName)
+        }        
         
         /*
          WKWebView 캐시 날리기
@@ -92,17 +113,19 @@ extension CommonWebView : WKScriptMessageHandler {
      Bridge 대응
      */
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("NATIVE_BRIDGE_RESULT_JSON : \(message.body as? String ?? "Bridge Message Type is not String")")
+        let jsonStr = message.body as? String ?? "Bridge Message Type is not String"
+        print("NATIVE_BRIDGE_RESULT_JSON : \(jsonStr)")
         /*
          웹에서 넘어오는 데이터 JSON String -> Data로 치환
          */
-        let jsonStr = message.body as? String ?? ""
         let jsonData = jsonStr.data(using: .utf8) ?? Data()
+        let functionName = (try? JSONDecoder().decode(CommonBridgeResultDto.self, from: jsonData).functionName) ?? ""
         /*
          설정된 Delegate들에게 일괄적으로 JsonData 전달
          */
         bridgeDelegates.forEach {
-            $0.value(jsonData)
+            $0.value(functionName, jsonData)
         }
+        
     }
 }

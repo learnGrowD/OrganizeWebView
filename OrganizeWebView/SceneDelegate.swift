@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        let rootViewController = CommonWebViewController()
+        let rootViewController = MainViewController()
         rootViewController.view.backgroundColor = .white
         
-        self.window?.rootViewController = rootViewController
+        self.window?.rootViewController = UINavigationController(rootViewController: rootViewController)
         self.window?.makeKeyAndVisible()
     }
 
