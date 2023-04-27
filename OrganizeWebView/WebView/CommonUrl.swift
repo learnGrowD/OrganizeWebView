@@ -50,7 +50,7 @@ struct SwiftUrl : CommonUrlProtocol {
      Detail Page 진입
      */
     init(person : Person) {
-        resultUrl = "\(baseUrl)/detail/\(person.id)"
+        resultUrl = "\(baseUrl)/detail/\(person.id)?name=\(person.name)&age=\(person.age)&address=\(person.address)"
     }
     
     enum Path : String {
@@ -68,17 +68,17 @@ struct KotlinUrl : CommonUrlProtocol {
     
     var resultUrl: String = ""
     
-    enum Path : String {
-        case convertJava = "convertJava"
-        case nullSafety = "nullSafety"
-    }
-    
     init(customPath : String) {
         resultUrl = "\(baseUrl)/\(customPath)"
     }
     
     init(path : Path) {
         resultUrl = "\(baseUrl)/\(path.rawValue)"
+    }
+    
+    enum Path : String {
+        case convertJava = "convertJava"
+        case nullSafety = "nullSafety"
     }
 }
 

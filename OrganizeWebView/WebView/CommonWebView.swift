@@ -19,7 +19,13 @@ import WebKit
  1. FunctionName
  2. JsonData
  */
+
+
+
 typealias BridgeDelegate = (String, Data) -> Void
+
+
+
 class CommonWebView : WKWebView {
     /*
      BrideDelegate Name
@@ -129,3 +135,8 @@ extension CommonWebView : WKScriptMessageHandler {
         
     }
 }
+
+
+
+
+

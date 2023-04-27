@@ -15,10 +15,16 @@ import RxCocoa
 
 /*
  1. LoadingView 대응 -> 0
- 2. Network Error View 대응 -> 0
- 
+ 2. Network Error View 대응 -> 0 
  3. NavigationBar
  4. popUp에 대해서 대응
+ */
+
+/*
+ Data를 전달하는 방식
+ 1. get
+ 2. injection
+ 3. bridge
  */
 
 class CommonWebViewController : BaseViewController {
@@ -53,7 +59,10 @@ class CommonWebViewController : BaseViewController {
         self.isNavHide = isNavHide
         self.navTitle = navTitle
         self.isPresentShow = isPresentShow
+        
         self.webView.load(with : urlProtocol.getUrl())
+        
+        
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -157,6 +166,10 @@ class CommonWebViewController : BaseViewController {
             }
         }
         
+        
+        
+        
+        
         /*
          그 외 일반적인 동작
          */
@@ -173,6 +186,9 @@ class CommonWebViewController : BaseViewController {
             }
             
         }
+        
+        
+        
     }
     
     func attribute() {

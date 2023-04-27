@@ -34,9 +34,10 @@ class MainViewController : BaseViewController {
             .when(.recognized)
             .bind(onNext : { [weak self] _ in
                 guard let self = self else { return }
-                let url = CommonUrl("https://www.naver.com")
-                let vc = CommonWebViewController(urlProtocol: url, isNavHide: false, navTitle: "NAVER")
-
+                let person = Person(id: 88, name: "D", age: 26, address: "서현동")
+                let url = SwiftUrl(person: person)
+                let vc = CommonWebViewController(urlProtocol: url)
+                
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
