@@ -42,6 +42,7 @@ class CommonWebView : WKWebView {
         self.bridgeName = bridgeName
         self.attribute()
     }
+    
     override init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
         self.attribute()

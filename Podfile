@@ -14,7 +14,6 @@ target 'OrganizeWebView' do
     pod 'Toast-Swift', '~> 5.0.1'
     pod 'PanModal'
     pod "RxGesture"
-    pod 'ReachabilitySwift'
     pod 'UIColor_Hex_Swift', '~> 5.1.9'
 
 end

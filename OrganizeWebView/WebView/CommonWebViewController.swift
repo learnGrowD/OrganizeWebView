@@ -12,6 +12,7 @@ import SnapKit
 import UIColor_Hex_Swift
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 /*
  1. LoadingView 대응 -> 0
@@ -27,14 +28,39 @@ import RxCocoa
  3. bridge
  */
 
+
+struct NavigationBarInfo {
+    var isNavHide : Bool {
+        navTitle.isEmpty ? true : false
+    }
+    let navTitle : String
+    /*
+     0 -> push
+     1 -> present
+     */
+    var type : Int
+    
+    
+    init() {
+        self.navTitle = ""
+        self.type = 0
+    }
+    
+    init(navTitle: String, type: Int) {
+        self.navTitle = navTitle
+        self.type = type
+    }
+    
+}
+
 class CommonWebViewController : BaseViewController {
     let disposeBag = DisposeBag()
+    
     let webView = CommonWebView(bridgeName: "will_d")
     var urlProtocol : CommonUrlProtocol? = nil
-    var isNavHide = false
-    var navTitle = ""
-    var isPresentShow = false
-    var loadingView : CommonLoadingView? = nil
+    var navInfo : NavigationBarInfo = .init()
+    
+    var loadingView : CommonLoadingView! = nil
     
     
     /*
@@ -47,22 +73,17 @@ class CommonWebViewController : BaseViewController {
      */
     convenience init(
         urlProtocol : CommonUrlProtocol,
-        isNavHide : Bool = true,
-        navTitle : String = "",
-        isPresentShow : Bool = false
+        navInfo : NavigationBarInfo? = nil
     ) {
         self.init(nibName: nil, bundle: nil)
         /*
          WebViewLoad
          */
         self.urlProtocol = urlProtocol
-        self.isNavHide = isNavHide
-        self.navTitle = navTitle
-        self.isPresentShow = isPresentShow
-        
         self.webView.load(with : urlProtocol.getUrl())
         
-        
+        guard let navInfo = navInfo else { return }
+        self.navInfo = navInfo
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -78,9 +99,9 @@ class CommonWebViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(isNavHide, animated: animated)
-        self.title = navTitle
-        if isPresentShow {
+        self.navigationController?.setNavigationBarHidden(navInfo.isNavHide, animated: animated)
+        self.title = navInfo.navTitle
+        if navInfo.type == 1 {
             let customView = UIImageView(image: UIImage(named: "exit")).then {
                 $0.snp.makeConstraints {
                     $0.width.height.equalTo(44)
@@ -94,7 +115,10 @@ class CommonWebViewController : BaseViewController {
                 })
                 .disposed(by: disposeBag)
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: customView)
-            self.isPresentShow = false
+            /*
+             초기화
+             */
+            navInfo.type = -1
         }
     }
     
@@ -153,6 +177,7 @@ class CommonWebViewController : BaseViewController {
                 break
             }
         }
+        
         
         /*
          Native Data 제공
@@ -245,6 +270,10 @@ extension CommonWebViewController : WKNavigationDelegate {
         hideLoading()
     }
     
+    
+    
+    
+    
     /*
      Network가 연결이 안되있을때 호출 되는 함수
      */
@@ -258,11 +287,9 @@ extension CommonWebViewController : WKNavigationDelegate {
     }
 }
 
-
 /*
  POP_UP
  */
-
 extension CommonWebViewController : WKUIDelegate {
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
@@ -272,7 +299,7 @@ extension CommonWebViewController : WKUIDelegate {
         popUpView = CommonWebView(frame: view.bounds, configuration: configuration)
         popUpView?.navigationDelegate = self
         popUpView?.uiDelegate = self
-        view.addSubview(popUpView ?? UIView())
+        view.addSubview(popUpView!)
         popUpView?.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -285,10 +312,10 @@ extension CommonWebViewController : WKUIDelegate {
          */
         if webView == popUpView {
             self.popUpView?.removeFromSuperview()
+            popUpView?.navigationDelegate = nil
+            popUpView?.uiDelegate = nil
             self.popUpView = nil
         }
-        
-        
     }
 }
 

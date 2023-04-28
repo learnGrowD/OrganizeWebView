@@ -14,7 +14,12 @@ import RxCocoa
 class MainViewController : BaseViewController {
     let disposeBag = DisposeBag()
     
-    let button = UILabel().then {
+    let button1 = UILabel().then {
+        $0.textColor = .black
+        $0.text = "Start WebView"
+    }
+    
+    let button2 = UILabel().then {
         $0.textColor = .black
         $0.text = "Start WebView"
     }
@@ -30,7 +35,7 @@ class MainViewController : BaseViewController {
     
     func bind() {
         
-        button.rx.tapGesture()
+        button1.rx.tapGesture()
             .when(.recognized)
             .bind(onNext : { [weak self] _ in
                 guard let self = self else { return }
@@ -41,17 +46,37 @@ class MainViewController : BaseViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
+        
+        button2.rx.tapGesture()
+            .when(.recognized)
+            .bind(onNext : { [weak self] _ in
+                guard let self = self else { return }
+                
+                let url = CommonUrl("https://www.naver.com")
+                let navInfo = NavigationBarInfo(navTitle: "Naver", type: 0)
+                let vc = CommonWebViewController(urlProtocol: url, navInfo: navInfo)
+                
+//                self.present(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func layout() {
         [
-            button
+            button1,
+            button2
         ].forEach {
             view.addSubview($0)
         }
         
-        button.snp.makeConstraints {
+        button1.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+        
+        button2.snp.makeConstraints {
+            $0.top.equalTo(button1.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
         }
         
     }
